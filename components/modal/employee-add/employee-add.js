@@ -179,8 +179,7 @@ const EmployeeForm = forwardRef(({ mode, initialData, onSubmit }, ref) => {
                     
                     // 추가 요청
                     response = await nextClient.post('/employee', updatedFormData);
-                    console.log(JSON.stringify(response.data));
-                    // alert('직원 메일은 ' + response.data);
+                    alert('직원 메일은 ' + response.data.data);
                 }
                 if (response.data.success) {
                     // 성공 시 직원 관리 페이지로

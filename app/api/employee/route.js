@@ -39,7 +39,10 @@ export async function POST(request) {
        });
   
       // 성공 응답 반환
-      return NextResponse.json({ success: true });
+      return NextResponse.json({ 
+        success: true,
+        data: response.data  // 백엔드에서 받은 URL
+      });
     } catch (error) {
       const errorMessage = error.response?.data.message || '서버 에러가 발생했습니다.';
       const statusCode = error.response?.status || 500;
