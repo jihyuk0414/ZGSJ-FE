@@ -179,7 +179,8 @@ const EmployeeForm = forwardRef(({ mode, initialData, onSubmit }, ref) => {
                     
                     // 추가 요청
                     response = await nextClient.post('/employee', updatedFormData);
-                    alert('직원이 추가되었습니다.');
+                    console.log(JSON.stringify(response.data));
+                    // alert('직원 메일은 ' + response.data);
                 }
                 if (response.data.success) {
                     // 성공 시 직원 관리 페이지로
@@ -189,6 +190,12 @@ const EmployeeForm = forwardRef(({ mode, initialData, onSubmit }, ref) => {
                     throw new Error(response.data.error || '요청 처리 실패');
                 }
             } catch (error) {
+                console.error('직원 추가/수정 중 에러 발생:', {
+                    message: error.message,
+                    response: error.response?.data,
+                    status: error.response?.status,
+                    fullError: error
+                });
                 setError(error.response?.data?.error || error.message);
             }
             

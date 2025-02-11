@@ -18,14 +18,14 @@ const getTodayDate = () => {
 };
 
 export const NAVIGATION_ITEMS = [
-    {
-        icon: BsGraphUp,
-        title:"매출ㆍ지출",
-        subTitles:[
-            {text:"매출ㆍ지출 조회", path:"/transactions/analytics"}, 
-            // {text:"간편장부ㆍ손익계산서", path:"/transactions/reports"}
-        ]
-    },
+    // {
+    //     icon: BsGraphUp,
+    //     title:"매출ㆍ지출",
+    //     subTitles:[
+    //         {text:"매출ㆍ지출 조회", path:"/transactions/analytics"}, 
+    //         // {text:"간편장부ㆍ손익계산서", path:"/transactions/reports"}
+    //     ]
+    // },
     {
         icon: BsCreditCard2Front,
         title:"급여 자동이체",

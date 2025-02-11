@@ -25,10 +25,10 @@ export default function AttendancePage() {
         setIsDesktop(checkIsDesktop());
     
         // 브라우저가 geolocation을 지원하지 않는 경우 체크
-        if (!('geolocation' in navigator)) {
-            setLocationPermission(false);
-            return;
-        }
+        // if (!('geolocation' in navigator)) {
+        //     setLocationPermission(false);
+        //     return;
+        // }
         function isIphoneSafari() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
             alert(userAgent)
@@ -107,11 +107,11 @@ export default function AttendancePage() {
                 const position = await getPosition(options);
                 
                 // 정확도가 100m 이상이면 재시도
-                if (position.accuracy > 100 && retryCount < 9) {
-                    console.log(`낮은 정확도 (${position.accuracy}m), 재시도 중...`);
-                    lastError = new Error('낮은 정확도');
-                    continue;
-                }
+                // if (position.accuracy > 100 && retryCount < 9) {
+                //     console.log(`낮은 정확도 (${position.accuracy}m), 재시도 중...`);
+                //     lastError = new Error('낮은 정확도');
+                //     continue;
+                // }
                 alert(`Latitude: ${position.lat}\nLongitude: ${position.lng}\nAccuracy: ${position.accuracy}`);
                 console.log(`위치 정확도: ${position.accuracy}m`);
                 return position;
@@ -184,12 +184,10 @@ export default function AttendancePage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                             )}
                         </svg>
-                        <span className={`font-bold ${locationPermission && !isDesktop ? 'text-green-700' : 'text-yellow-700'}`}>
+                        <span className={`font-bold ${locationPermission ? 'text-green-700' : 'text-yellow-700'}`}>
                             {locationPermission 
-                                ? isDesktop 
-                                    ? '휴대폰으로 접속해주세요!' 
-                                    : '위치 권한이 허용되었습니다'
-                                : '반드시 휴대폰을 이용하고 위치 권한을 허용해주세요!'}
+                                ?  '위치 권한이 허용되었습니다'
+                                : '위치 권한을 허용해주세요!'}
                         </span>
                     </div>
                 </div>
@@ -197,7 +195,7 @@ export default function AttendancePage() {
                 <button
                     type="button"
                     onClick={(e) => handleSubmit(e, 'go')}
-                    disabled={loading || !locationPermission || isDesktop}
+                    disabled={loading || !locationPermission }
                     className="flex-1 px-4 py-2 bg-blue-500 text-white rounded disabled:bg-gray-400 hover:bg-blue-600"
                 >
                     {loading ? 'Processing...' : '출근하기'}
@@ -205,7 +203,7 @@ export default function AttendancePage() {
                 <button
                     type="button"
                     onClick={(e) => handleSubmit(e, 'leave')}
-                    disabled={loading || !locationPermission || isDesktop}
+                    disabled={loading || !locationPermission }
                     className="flex-1 px-4 py-2 bg-red-500 text-white rounded disabled:bg-gray-400 hover:bg-red-600"
                 >
                     {loading ? 'Processing...' : '퇴근하기'}
