@@ -49,7 +49,7 @@ export default function OnboardingPage() {
                     className={styles.secondaryButton}
                     onClick={handleWooriClick}
                 >
-                  우리은행 계좌 만들러가기
+                  은행 계좌 만들러가기
                 </button>
               </div>
             </div>

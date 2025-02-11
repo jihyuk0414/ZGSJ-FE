@@ -389,7 +389,7 @@ export default function Signup() {
 
           <div className={styles.bottomSection}>
             <div className={styles.accountCheck}>
-              <span>우리은행 사업자 계좌가 없으신가요?</span>
+              <span>은행 사업자 계좌가 없으신가요?</span>
               <button
                 type="button"
                 className={styles.linkButton}
